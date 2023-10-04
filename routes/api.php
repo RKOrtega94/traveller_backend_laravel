@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register user routes for your application.
+|
+*/
+Route::controller(UserController::class)->group(function () {
+    Route::get('/users', 'getAll'); // GET /api/users
+    Route::post('/users', 'create'); // POST /api/users
+    Route::get('/users/{id}', 'show'); // GET /api/users/{id}
+    Route::put('/users/{id}', 'update'); // PUT /api/users/{id}
+    Route::delete('/users/{id}', 'delete'); // DELETE /api/users/{id}
 });
