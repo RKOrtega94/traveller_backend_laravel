@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('name');
-            $table->string('code', 2)->unique();
+            $table->string('code', 2);
             $table->string('phone_code', 5)->nullable();
 
             $table->text('flag')->nullable();

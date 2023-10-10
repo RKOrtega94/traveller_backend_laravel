@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\TouristSpotController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +32,29 @@ Route::controller(UserController::class)->group(function () {
     Route::delete('/users/{id}', 'delete'); // DELETE /api/users/{id}
 });
 
+/*
+|--------------------------------------------------------------------------
+|   Role Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register role routes for your application.
+ */
 Route::controller(RoleController::class)->group(function () {
     Route::get('/roles', 'getAll'); // GET /api/roles
     Route::get('/roles/{id}', 'getRole'); // GET /api/roles/{id}
     Route::post('/roles', 'create'); // POST /api/roles
     Route::put('/roles/{id}', 'update'); // PUT /api/roles/{id}
     Route::delete('/roles/{id}', 'delete'); // DELETE /api/roles/{id}
+});
+
+/*
+|--------------------------------------------------------------------------
+|   Tourist Spot Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register tourist spot routes for your application.
+*/
+Route::controller(TouristSpotController::class)->group(function () {
+    Route::get('/tourist-spots', 'getAll'); // GET /api/tourist-spots
+    Route::get('/tourist-spots/{id}', 'show'); // GET /api/tourist-spots/{id}
 });

@@ -13,10 +13,10 @@ return new class extends Migration {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('country_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
 
             $table->string('name');
-            $table->string('code', 10)->unique();
+            $table->string('code', 10);
 
             $table->boolean('is_active')->default(true);
 

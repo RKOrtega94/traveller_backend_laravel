@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,12 @@ class StateFactory extends Factory
      */
     public function definition(): array
     {
+        Country::factory()->create();
         return [
-            //
+            'name' => $this->faker->name(),
+            'code' => 'ab',
+            'is_active' => $this->faker->boolean(),
+            'country_id' => Country::all()->random()->id,
         ];
     }
 }

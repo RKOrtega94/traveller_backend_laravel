@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,15 @@ class TouristSpotFactory extends Factory
      */
     public function definition(): array
     {
+        Location::factory()->count(1)->create();
+
         return [
-            //
+            'name' => $this->faker->name(),
+            'description' => $this->faker->text(),
+            'address' => $this->faker->address(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
+            'location_id' => Location::all()->random()->id,
         ];
     }
 }
