@@ -33,4 +33,5 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(RoleController::class)->group(function () {
     Route::get('/roles', 'getAll'); // GET /api/roles
+    Route::get('/roles/{id}', 'getRole'); // GET /api/roles/{id}
 });
