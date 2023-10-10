@@ -34,8 +34,11 @@ class UserController extends Controller
 
             $users->load('role');
 
+            Log::info('Users retrieved successfully.');
+
             return $this->sendResponse($users, 'Users retrieved successfully.', Response::HTTP_OK);
         } catch (\Throwable $th) {
+            Log::error($th->getMessage());
             return $this->sendError($th->getMessage(), [], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -88,7 +91,8 @@ class UserController extends Controller
         }
     }
 
-    function update(Request $request, $id) : JsonResponse {
+    function update(Request $request, $id): JsonResponse
+    {
         try {
             $user = User::findOrFail($id);
 
@@ -124,7 +128,8 @@ class UserController extends Controller
         }
     }
 
-    function delete($id) : JsonResponse {
+    function delete($id): JsonResponse
+    {
         try {
             $user = User::findOrFail($id);
 
