@@ -57,4 +57,7 @@ Route::controller(RoleController::class)->group(function () {
 Route::controller(TouristSpotController::class)->group(function () {
     Route::get('/tourist-spots', 'getAll'); // GET /api/tourist-spots
     Route::get('/tourist-spots/{id}', 'show'); // GET /api/tourist-spots/{id}
+    Route::post('/tourist-spots', 'create'); // POST /api/tourist-spots
+    Route::put('/tourist-spots/{id}', 'update'); // PUT /api/tourist-spots/{id}
+    Route::delete('/tourist-spots/{id}', 'delete'); // DELETE /api/tourist-spots/{id}
 });

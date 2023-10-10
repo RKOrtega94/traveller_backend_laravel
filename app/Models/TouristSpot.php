@@ -16,6 +16,7 @@ class TouristSpot extends Model
         'address',
         'latitude',
         'longitude',
+        'location_id'
     ];
 
     function location(): BelongsTo
