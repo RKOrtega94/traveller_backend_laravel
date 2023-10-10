@@ -34,4 +34,7 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(RoleController::class)->group(function () {
     Route::get('/roles', 'getAll'); // GET /api/roles
     Route::get('/roles/{id}', 'getRole'); // GET /api/roles/{id}
+    Route::post('/roles', 'create'); // POST /api/roles
+    Route::put('/roles/{id}', 'update'); // PUT /api/roles/{id}
+    Route::delete('/roles/{id}', 'delete'); // DELETE /api/roles/{id}
 });
