@@ -33,12 +33,8 @@ class UserController extends Controller
                 ->paginate($limit, ['*'], 'page', $page);
 
             $users->load('role');
-
-            Log::info('Users retrieved successfully.');
-
             return $this->sendResponse($users, 'Users retrieved successfully.', Response::HTTP_OK);
         } catch (\Throwable $th) {
-            Log::error($th->getMessage());
             return $this->sendError($th->getMessage(), [], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

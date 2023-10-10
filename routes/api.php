@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,8 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/users/{id}', 'show'); // GET /api/users/{id}
     Route::put('/users/{id}', 'update'); // PUT /api/users/{id}
     Route::delete('/users/{id}', 'delete'); // DELETE /api/users/{id}
+});
+
+Route::controller(RoleController::class)->group(function () {
+    Route::get('/roles', 'getAll'); // GET /api/roles
 });
