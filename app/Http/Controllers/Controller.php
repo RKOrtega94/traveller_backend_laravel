@@ -12,6 +12,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    /**
+     * Send response with data and message
+     *
+     * @param mixed $data
+     * @param mixed $message
+     * @param mixed $code
+     * @return \Illuminate\Http\JsonResponse
+     */
     function sendResponse($data, $message, $code): JsonResponse
     {
         return response()->json([
@@ -20,6 +28,14 @@ class Controller extends BaseController
         ], $code);
     }
 
+    /**
+     * Send error response with message and errors
+     *
+     * @param mixed $message
+     * @param mixed $errors
+     * @param mixed $code
+     * @return \Illuminate\Http\JsonResponse
+     */
     function sendError($message, $errors, $code = Response::HTTP_BAD_REQUEST): JsonResponse
     {
         return response()->json([
