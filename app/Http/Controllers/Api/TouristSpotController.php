@@ -28,7 +28,7 @@ class TouristSpotController extends Controller
                 ->orWhere('address', 'like', "%{$search}%")
                 ->paginate($limit, ['*'], 'page', $page);
 
-            $touristSpot->load('location');
+            $touristSpot->load(['location', 'categories']);
 
             return $this->sendResponse($touristSpot, 'Tourist Spot retrieved successfully.', Response::HTTP_OK);
         } catch (\Throwable $th) {
@@ -41,7 +41,7 @@ class TouristSpotController extends Controller
         try {
             $touristSpot = TouristSpot::findOrFail($id);
 
-            $touristSpot->load('location');
+            $touristSpot->load(['location', 'categories']);
 
             return $this->sendResponse($touristSpot, 'Tourist Spot retrieved successfully.', Response::HTTP_OK);
         } catch (ModelNotFoundException $th) {
@@ -69,7 +69,7 @@ class TouristSpotController extends Controller
 
             $touristSpot = TouristSpot::create($validated->validated());
 
-            $touristSpot->load('location');
+            $touristSpot->load(['location', 'categories']);
 
             return $this->sendResponse($touristSpot, 'Tourist Spot created successfully.', Response::HTTP_CREATED);
         } catch (ValidationException $th) {
@@ -101,7 +101,7 @@ class TouristSpotController extends Controller
 
             $touristSpot->update($validated->validated());
 
-            $touristSpot->load('location');
+            $touristSpot->load(['location', 'categories']);
 
             return $this->sendResponse($touristSpot, 'Tourist Spot updated successfully.', Response::HTTP_OK);
         } catch (ModelNotFoundException $th) {

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TouristSpotController;
+use App\Http\Controllers\Api\TouristTypeController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -93,4 +94,19 @@ Route::controller(CategoryController::class)->group(function () {
     Route::post('/categories', 'create'); // POST /api/categories
     Route::put('/categories/{id}', 'update'); // PUT /api/categories/{id}
     Route::delete('/categories/{id}', 'delete'); // DELETE /api/categories/{id}
+});
+
+/*
+|--------------------------------------------------------------------------
+|   Tourist Type Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register tourist type routes for your application.
+*/
+Route::controller(TouristTypeController::class)->group(function () {
+    Route::get('/tourist-types', 'getAll'); // GET /api/tourist-types
+    Route::get('/tourist-types/{id}', 'show'); // GET /api/tourist-types/{id}
+    Route::post('/tourist-types', 'create'); // POST /api/tourist-types
+    Route::put('/tourist-types/{id}', 'update'); // PUT /api/tourist-types/{id}
+    Route::delete('/tourist-types/{id}', 'delete'); // DELETE /api/tourist-types/{id}
 });

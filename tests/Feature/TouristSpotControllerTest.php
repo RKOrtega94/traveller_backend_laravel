@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use App\Models\Location;
 use App\Models\TouristSpot;
 use Database\Factories\TouristSpotFactory;
@@ -52,6 +53,13 @@ class TouristSpotControllerTest extends TestCase
                                             'flag'
                                         ]
                                     ]
+                                ]
+                            ],
+                            'categories' => [
+                                '*' => [
+                                    'name',
+                                    'description',
+                                    'icon',
                                 ]
                             ]
                         ]
@@ -108,6 +116,13 @@ class TouristSpotControllerTest extends TestCase
                                     'flag'
                                 ]
                             ]
+                        ]
+                    ],
+                    'categories' => [
+                        '*' => [
+                            'name',
+                            'description',
+                            'icon',
                         ]
                     ]
                 ]
@@ -169,6 +184,13 @@ class TouristSpotControllerTest extends TestCase
                                     'flag'
                                 ]
                             ]
+                        ]
+                    ],
+                    'categories' => [
+                        '*' => [
+                            'name',
+                            'description',
+                            'icon',
                         ]
                     ]
                 ]
@@ -240,6 +262,13 @@ class TouristSpotControllerTest extends TestCase
                                     'flag'
                                 ]
                             ]
+                        ]
+                    ],
+                    'categories' => [
+                        '*' => [
+                            'name',
+                            'description',
+                            'icon',
                         ]
                     ]
                 ]

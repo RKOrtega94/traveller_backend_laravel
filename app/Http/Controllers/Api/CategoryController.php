@@ -15,10 +15,10 @@ use PDOException;
 
 class CategoryController extends Controller
 {
-    function getAll(): JsonResponse
+    function getAll(Request $request): JsonResponse
     {
         try {
-            $search = request()->query('search', '');
+            $search = $request->query('search', '');
 
             $categories = Category::when($search, function ($query, $search) {
                 return $query->where('name', 'like', "%{$search}%");
@@ -30,10 +30,10 @@ class CategoryController extends Controller
         }
     }
 
-    function create(): JsonResponse
+    function create(Request $request): JsonResponse
     {
         try {
-            $validated = Validator::make(request()->all(), [
+            $validated = Validator::make($request->all(), [
                 'name' => 'required|string',
                 'description' => 'required|string',
                 'icon' => 'string',
@@ -43,7 +43,7 @@ class CategoryController extends Controller
                 return $this->sendError('Validation error.', $validated->errors(), Response::HTTP_BAD_REQUEST);
             }
 
-            $category = Category::create(request()->all());
+            $category = Category::create($request->all());
 
             return $this->sendResponse($category, 'Category created successfully.', Response::HTTP_CREATED);
         } catch (ValidationException $th) {
@@ -74,14 +74,14 @@ class CategoryController extends Controller
         }
     }
 
-    function update($id): JsonResponse
+    function update(Request $request, $id): JsonResponse
     {
         try {
             $category = Category::findOrFail($id);
 
-            $validated = Validator::make(request()->all(), [
-                'name' => 'string',
-                'description' => 'string',
+            $validated = Validator::make($request->all(), [
+                'name' => 'required|string',
+                'description' => 'required|string',
                 'icon' => 'string',
             ]);
 
@@ -89,7 +89,7 @@ class CategoryController extends Controller
                 return $this->sendError('Validation error.', $validated->errors(), Response::HTTP_BAD_REQUEST);
             }
 
-            $category->update(request()->all());
+            $category->update($request->all());
 
             return $this->sendResponse($category, 'Category updated successfully.', Response::HTTP_OK);
         } catch (ModelNotFoundException $th) {
