@@ -39,21 +39,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Create a new user.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * Request body should be like this:
-     * {
-     *    "name": "John Doe",  // required
-     *    "email": "email@email.com",   // required
-     *    "password": "password",   // required
-     *    "role_id": 1   // required
-     * }
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     function create(Request $request): JsonResponse
     {
         try {
