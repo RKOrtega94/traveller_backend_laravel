@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TouristSpotController;
 use App\Http\Controllers\Api\UserController;
@@ -60,4 +61,20 @@ Route::controller(TouristSpotController::class)->group(function () {
     Route::post('/tourist-spots', 'create'); // POST /api/tourist-spots
     Route::put('/tourist-spots/{id}', 'update'); // PUT /api/tourist-spots/{id}
     Route::delete('/tourist-spots/{id}', 'delete'); // DELETE /api/tourist-spots/{id}
+});
+
+/*
+|--------------------------------------------------------------------------
+|   Location Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register location routes for your application.
+*/
+
+Route::controller(LocationController::class)->group(function () {
+    Route::get('/locations', 'getAll'); // GET /api/locations
+    Route::get('/locations/{id}', 'show'); // GET /api/locations/{id}
+    Route::post('/locations', 'create'); // POST /api/locations
+    Route::put('/locations/{id}', 'update'); // PUT /api/locations/{id}
+    Route::delete('/locations/{id}', 'delete'); // DELETE /api/locations/{id}
 });

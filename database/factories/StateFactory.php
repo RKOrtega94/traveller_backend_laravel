@@ -17,10 +17,10 @@ class StateFactory extends Factory
      */
     public function definition(): array
     {
-        Country::factory()->create();
+        Country::factory()->count(10)->create();
         return [
             'name' => $this->faker->name(),
-            'code' => 'ab',
+            'code' => $this->faker->randomLetter() . $this->faker->randomLetter(),
             'is_active' => $this->faker->boolean(),
             'country_id' => Country::all()->random()->id,
         ];

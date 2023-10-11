@@ -18,15 +18,15 @@ class UserController extends Controller
     /**
      * Get all users.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request request()
      * @return \Illuminate\Http\JsonResponse
      */
-    function getAll(Request $request): JsonResponse
+    function getAll(): JsonResponse
     {
         try {
-            $search = $request->query('search', '');
-            $limit = $request->query('limit', 10);
-            $page = $request->query('page', 1);
+            $search = request()->query('search', '');
+            $limit = request()->query('limit', 10);
+            $page = request()->query('page', 1);
 
             $users = User::where('name', 'like', "%{$search}%")
                 ->orWhere('email', 'like', "%{$search}%")
@@ -39,10 +39,10 @@ class UserController extends Controller
         }
     }
 
-    function create(Request $request): JsonResponse
+    function create(): JsonResponse
     {
         try {
-            $validated = Validator::make($request->all(), [
+            $validated = Validator::make(request()->all(), [
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|string',
@@ -87,12 +87,12 @@ class UserController extends Controller
         }
     }
 
-    function update(Request $request, $id): JsonResponse
+    function update($id): JsonResponse
     {
         try {
             $user = User::findOrFail($id);
 
-            $validated = Validator::make($request->all(), [
+            $validated = Validator::make(request()->all(), [
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email,' . $user->id,
                 'password' => 'required|string',
