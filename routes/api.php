@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TouristSpotController;
@@ -77,4 +78,19 @@ Route::controller(LocationController::class)->group(function () {
     Route::post('/locations', 'create'); // POST /api/locations
     Route::put('/locations/{id}', 'update'); // PUT /api/locations/{id}
     Route::delete('/locations/{id}', 'delete'); // DELETE /api/locations/{id}
+});
+
+/*
+|--------------------------------------------------------------------------
+|   Category Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register category routes for your application.
+*/
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/categories', 'getAll'); // GET /api/categories
+    Route::get('/categories/{id}', 'show'); // GET /api/categories/{id}
+    Route::post('/categories', 'create'); // POST /api/categories
+    Route::put('/categories/{id}', 'update'); // PUT /api/categories/{id}
+    Route::delete('/categories/{id}', 'delete'); // DELETE /api/categories/{id}
 });
