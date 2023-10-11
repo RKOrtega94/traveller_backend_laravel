@@ -13,7 +13,7 @@ class Location extends Model
     protected $fillable = [
         'city_id',
         'name',
-        'code',
+        'zip_code',
         'is_active'
     ];
 

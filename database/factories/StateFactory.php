@@ -17,7 +17,7 @@ class StateFactory extends Factory
      */
     public function definition(): array
     {
-        Country::factory()->count(10)->create();
+        Country::factory()->count(5)->create();
         return [
             'name' => $this->faker->name(),
             'code' => $this->faker->randomLetter() . $this->faker->randomLetter(),

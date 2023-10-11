@@ -16,7 +16,7 @@ class TouristSpotControllerTest extends TestCase
     function test_get_all_tourist_spot(): void
     {
         // Create a 100 tourist spots
-        TouristSpot::factory()->count(100)->create();
+        TouristSpot::factory()->count(10)->create();
 
         $response = $this->getJson('/api/tourist-spots');
 
@@ -36,7 +36,7 @@ class TouristSpotControllerTest extends TestCase
                             'location' => [
                                 'id',
                                 'name',
-                                'code',
+                                'zip_code',
                                 'city' => [
                                     'name',
                                     'code',
@@ -74,7 +74,7 @@ class TouristSpotControllerTest extends TestCase
 
     function test_get_tourist_spot_by_id(): void
     {
-        TouristSpotFactory::new()->count(100)->create();
+        TouristSpotFactory::new()->count(10)->create();
 
         $response = $this->getJson('/api/tourist-spots/' . TouristSpot::first()->id);
 
@@ -92,7 +92,7 @@ class TouristSpotControllerTest extends TestCase
                     'location' => [
                         'id',
                         'name',
-                        'code',
+                        'zip_code',
                         'city' => [
                             'name',
                             'code',
@@ -153,7 +153,7 @@ class TouristSpotControllerTest extends TestCase
                     'location' => [
                         'id',
                         'name',
-                        'code',
+                        'zip_code',
                         'city' => [
                             'name',
                             'code',
@@ -224,7 +224,7 @@ class TouristSpotControllerTest extends TestCase
                     'location' => [
                         'id',
                         'name',
-                        'code',
+                        'zip_code',
                         'city' => [
                             'name',
                             'code',

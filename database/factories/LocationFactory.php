@@ -17,10 +17,10 @@ class LocationFactory extends Factory
      */
     public function definition(): array
     {
-        City::factory()->count(10)->create();
+        City::factory()->count(5)->create();
         return [
             'name' => $this->faker->name(),
-            'code' => $this->faker->postcode(),
+            'zip_code' => $this->faker->postcode(),
             'is_active' => $this->faker->boolean(),
             'city_id' => City::all()->random()->id,
         ];

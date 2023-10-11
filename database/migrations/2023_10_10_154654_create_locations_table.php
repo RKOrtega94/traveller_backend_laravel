@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
 
             $table->string('name');
-            $table->string('code', 10);
+            $table->string('zip_code');
 
             $table->boolean('is_active')->default(true);
 

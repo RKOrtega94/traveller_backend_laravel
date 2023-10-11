@@ -17,7 +17,7 @@ class CityFactory extends Factory
      */
     public function definition(): array
     {
-        State::factory()->count(10)->create();
+        State::factory()->count(5)->create();
         return [
             'name' => $this->faker->name(),
             'code' => $this->faker->randomLetter() . $this->faker->randomLetter(),
